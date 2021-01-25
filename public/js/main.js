@@ -19,13 +19,15 @@ class Patient {
         this.goTo = () => {
             console.log(`${this.nom} est allé à la pharmacie`);
         };
+        
         this.takeCare = () => {
-            if(this.argent>traitement1.prix){
+            if (this.argent >= 100) {
                 console.log(`${this.nom} est soigné`);
             } else {
-                console.log(`${this.nom} n'as pas assez d'argent pour le traitement`);
+                cimetiere.push(this.nom);
+                console.log(`${this.nom} n'as pas assez d'argent pour le traitement.`);
             }
-        }
+        };
         this.paye = () => {
             this.argent -= doctor.tarif;
         }
@@ -78,7 +80,7 @@ let traitement3 = new Pharmacie('CheckLinkRelation', 35)
 let traitement4 = new Pharmacie('Ventoline', 40)
 let traitement5 = new Pharmacie('f12+doc', 20)
 
-let cimetière = [];
+let cimetiere = [];
 
 
 
@@ -162,6 +164,7 @@ let chat = {
     patient1.goTo()
     console.log(`le traitement de ${patient1.nom} coûte ${traitement1.prix} euros`);
     patient1.takeCare()
+    console.log(`${patient1.nom} est mort`);
     // salleAttente.patientOut2(patient1);
     // console.log(doctor.cabinet.length);
 
@@ -206,8 +209,8 @@ console.log("___________________________________________________________________
     console.log(`${patient3.nom} a quitté le cabinet`);
     patient3.goTo()
     console.log(`le traitement de ${patient3.nom} coûte ${traitement3.prix} euros`);
-    patient3.takeCare()
-
+    patient3.takeCare();
+    console.log(`${patient3.nom} est mort`);
     console.log("____________________________________________________________________");
 
 
@@ -253,4 +256,5 @@ console.log("___________________________________________________________________
     patient5.goTo()
     console.log(`le traitement de ${patient5.nom} coûte ${traitement5.prix} euros`);
     patient5.takeCare()
+    console.log(`${patient3.nom} est mort`);
     salleAttente.patient.splice(salleAttente.patient.indexOf(patient5), 1); console.log(`Dans la salle d'attente il y a ${salleAttente.patient.length} personnes`);
